@@ -33,7 +33,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($companies as $company)
+            @forelse($companies as $company)
                 <tr>
                     <th scope="row">{{ $loop->index }}</th>
                     <td>
@@ -59,7 +59,14 @@
                         </div>
                     </td>
                 </tr>
-            @endforeach
+            @empty
+                <td colspan="5">
+                    <h1>No Companies</h1>
+                    <a href="/company/show">
+                        Add New Company
+                    </a>
+                </td>
+            @endforelse
             </tbody>
         </table>
         <div class="w-100">

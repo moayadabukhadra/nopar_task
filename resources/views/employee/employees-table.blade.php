@@ -33,7 +33,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($employees as $employee)
+            @forelse($employees as $employee)
                 <tr>
                     <th scope="row">{{ $loop->index }}</th>
                     <td>{{ $employee->first_name . $employee->last_name }}</td>
@@ -53,7 +53,14 @@
                         </div>
                     </td>
                 </tr>
-            @endforeach
+            @empty
+                <td colspan="5">
+                    <h1>No Employees</h1>
+                    <a href="/employee/show">
+                        Add New Employee
+                    </a>
+                </td>
+            @endforelse
             </tbody>
         </table>
         <div class="w-100">
