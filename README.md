@@ -9,4 +9,5 @@
 5. run `php artisan migrate`.
 6. run `php artisan db:seed`.
 7. link the storage with the public folder with the command `php aritsan storage:link`.
-8. Login Credentials for Admin User ('email' => 'admin@admin.com' , 'password'=>password);
+8. `npm run build` && `php artisan serve`.
+9. Login Credentials for Admin User ('email' => 'admin@admin.com' , 'password'=>password);
