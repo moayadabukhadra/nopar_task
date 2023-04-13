@@ -11,3 +11,5 @@
 7. link the storage with the public folder with the command `php aritsan storage:link`.
 8. `npm run build` && `php artisan serve`.
 9. Login Credentials for Admin User ('email' => 'admin@admin.com' , 'password'=>password);
+
+
