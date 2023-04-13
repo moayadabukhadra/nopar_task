@@ -10,10 +10,17 @@ class EmployeeController extends Controller
 {
     public function index(Request $request)
     {
+        $companies = Company::all();
         $query_string = '%' . $request->get('search') . '%';
-        $employees = Employee::with('company')->where('first_name','like',$query_string)
-        ->orWhere('last_name','like',$query_string)->paginate(10);
-        return view('employee.employees-table', compact('employees'));
+        $selected_company = $request->get('company_id') || null;
+        $employees = Employee::with('company')
+            ->when($selected_company,function ($query) use ($selected_company){
+                $query->where('company_id',$selected_company);
+            })
+            ->where('first_name','like',$query_string)
+            
+           ->paginate(10);
+        return view('employee.employees-table', compact('employees','companies'));
     }
 
     public function show(Employee $employee = null)

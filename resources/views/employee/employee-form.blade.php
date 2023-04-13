@@ -5,36 +5,39 @@
               enctype="multipart/form-data">
             @csrf
 
-            <div class="mb-5">
+            <div class="mb-3">
                 <label for="first_name">First Name</label>
                 <input id="first_name" type="text" name="first_name" class="form-control"
                        value="{{ old('first_name') ?? $employee?->first_name }}">
                 @error('first_name') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
-            <div class="mb-5">
+            <div class="mb-3">
                 <label for="last_name">Last Name</label>
                 <input id="last_name" type="text" name="last_name" class="form-control"
                        value="{{ old('last_name') ?? $employee?->last_name }}">
                 @error('last_name') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
-            <div class="mb-5">
+            <div class="mb-3">
                 <label for="email">Email</label>
                 <input id="email" type="email" name="email" class="form-control"
                        value="{{ old('email') ?? $employee?->email }}">
                 @error('email') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
-            <div class="mb-5">
+            <div class="mb-3">
                 <label for="phone">Phone</label>
                 <input id="phone" type="text" name="phone" class="form-control"
                        value="{{ old('phone') ?? $employee?->phone }}">
                 @error('phone') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
-            <div class="mb-5">
-                <select class="select2 form-control" name="company_id">
+            <div class="mb-3">
+                <label for="company">
+                    Company
+                </label>
+                <select id="company" class="select2 form-control" name="company_id">
                     @foreach($companies as $company)
                         <option
-                            @if($employee->company_id == $company->id) selected @endif
-                            value="{{ $company->id }}">
+                            @if($employee?->company_id == $company->id) selected @endif
+                        value="{{ $company->id }}">
                             {{ $company->name }}
                         </option>
                     @endforeach
